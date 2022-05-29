@@ -7,6 +7,7 @@
 
 import Foundation
 
+// If add TVs rebuild model, add some optinals
 struct MovieInfoModel: Codable {
     let title, originalTitle, fullTitle: String
     let type, year, image: String

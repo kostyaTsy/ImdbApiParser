@@ -13,23 +13,6 @@ struct HorizontalMovieCardView: View {
     var body: some View {
         VStack {
             UrlImageView(urlString: movie.image, imgWidth: imgWidth, imgHeight: imgHeight)
-            /*if let url = URL(string: movie.image) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: imgWidth, height: imgHeight)
-                        
-                } placeholder: {
-                    ProgressView()
-                }
-                
-            }
-            else {
-                Image(systemName: "house")
-                    .resizable()
-                    .frame(height: imgHeight)
-            }*/
             
             HStack {
                 Image(systemName: "star.fill")

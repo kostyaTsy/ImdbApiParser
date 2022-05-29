@@ -54,10 +54,14 @@ struct MovieIntroView: View {
                     }
                     
                     // TODO: show full plot on tap
-                    Text(movieInfoArr.plot)
-                        .font(.subheadline)
-                        .frame(maxWidth: .infinity, maxHeight: plotHeight, alignment: .leading)
-                        .padding(4)
+                    NavigationLink(destination: FullPlotView(plot: movieInfoArr.plot, title: movieInfoArr.fullTitle)) {
+                        Text(movieInfoArr.plot)
+                            .font(.subheadline)
+                            .padding(.leading, 4)
+                            .padding(.trailing)
+                            .frame(maxWidth: .infinity, maxHeight: plotHeight, alignment: .leading)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
             
