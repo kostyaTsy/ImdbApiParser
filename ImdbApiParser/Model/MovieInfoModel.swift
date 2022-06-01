@@ -11,7 +11,8 @@ import Foundation
 struct MovieInfoModel: Codable {
     let title, originalTitle, fullTitle: String
     let type, year, image: String
-    let releaseDate, runtimeStr: String
+    let releaseDate: String
+    let runtimeStr: String? // Change to optional
     let plot: String
     
     let directors, writers: String
@@ -27,7 +28,8 @@ struct MovieInfoModel: Codable {
     
     let companies, countries: String
     let contentRating: String
-    let imDbRating, imDbRatingVotes, metacriticRating: String
+    let imDbRating, imDbRatingVotes: String
+    let metacriticRating: String? // Change to optional
     
     let boxOffice: BoxOffice
     struct BoxOffice: Codable {
@@ -39,5 +41,6 @@ struct MovieInfoModel: Codable {
         let id, title, image, imDbRating: String
     }*/
     
-    let tvSeriesInfo, tvEpisodeInfo, errorMessage: String?
+    //let tvSeriesInfo, tvEpisodeInfo,
+    let errorMessage: String?
 }

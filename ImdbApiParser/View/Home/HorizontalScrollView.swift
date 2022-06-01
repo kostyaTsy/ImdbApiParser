@@ -39,6 +39,7 @@ struct HorizontalScrollView: View {
 }
 
 struct HorizontalScrollView_Previews: PreviewProvider {
+    static var movies: Movies = load("movies.json")
     static var previews: some View {
         HorizontalScrollView(movies: movies.items, title: "Title")
             .preferredColorScheme(.light)

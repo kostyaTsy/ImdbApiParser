@@ -13,7 +13,9 @@ struct UrlImageView: View {
     var imgHeight: CGFloat
     
     init(urlString: String, imgWidth: CGFloat, imgHeight: CGFloat) {
-        urlImageModel = UrlImageModel(urlString: urlString)
+        let tmpUrl = urlString.replacingOccurrences(of: "/original/", with: "/\(Int(imgWidth+30))x\(Int(imgHeight))/")
+        urlImageModel = UrlImageModel(urlString: tmpUrl)
+        //urlImageModel = UrlImageModel(urlString: urlString)
         self.imgWidth = imgWidth
         self.imgHeight = imgHeight
     }

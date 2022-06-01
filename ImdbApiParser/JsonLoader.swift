@@ -7,7 +7,7 @@
 
 import Foundation
 
-var movies: Movies = load("movies.json")
+//var movies: Movies = load("movies.json")
 //var moviesInfo: MovieInfoModel = load("movieinfo.json")
 
 func load<T: Decodable>(_ filename: String) -> T {

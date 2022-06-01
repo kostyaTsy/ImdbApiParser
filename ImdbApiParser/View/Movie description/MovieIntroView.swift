@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct MovieIntroView: View {
     
@@ -19,9 +20,14 @@ struct MovieIntroView: View {
                 .padding([.leading, .top])
                 .padding(.bottom, 5)
             HStack(spacing: 15) {
+                
+                // Output type if title is not a movie
+                if movieInfoArr.type != "Movie" {
+                    Text(movieInfoArr.type)
+                }
                 Text(movieInfoArr.year)
                 Text(movieInfoArr.contentRating)
-                Text(movieInfoArr.runtimeStr)
+                Text(movieInfoArr.runtimeStr ?? "")
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading)
@@ -79,17 +85,19 @@ struct MovieIntroView: View {
                         .padding(.bottom, 10)
                 }
                 .padding(.leading, 30)
-                Spacer()
                 
                 // MetaScore
-                VStack {
-                    Text(movieInfoArr.metacriticRating)
-                        .padding(5)
-                        .background(Color(.green))
-                        .font(.title2)
-                    Text("Metascore")
+                if let metacriticRating = movieInfoArr.metacriticRating {
+                    Spacer()
+                    VStack {
+                        Text(metacriticRating)
+                            .padding(5)
+                            .background(Color(.green))
+                            .font(.title2)
+                        Text("Metascore")
+                    }
+                    .padding(.trailing, 30)
                 }
-                .padding(.trailing, 30)
             }
             Spacer()
             

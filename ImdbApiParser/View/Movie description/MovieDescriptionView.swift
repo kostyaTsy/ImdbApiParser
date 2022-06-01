@@ -11,7 +11,6 @@ import SwiftUI
 struct MovieDescriptionView: View {
     @ObservedObject var movieInfoViewModel = ApiCall<MovieInfoModel>()
     var movieId: String
-    //@State var movieInfoArr: MovieInfoModel = load("movieInfo.json")
     
     var body: some View {
         if let dataModel = movieInfoViewModel.dataModel {
@@ -49,13 +48,6 @@ struct MovieDescriptionView: View {
             .background(Color(uiColor: UIColor(named: "BackColor") ?? .systemBackground))
             .navigationTitle(movieInfoViewModel.dataModel?.title ?? "")
             .navigationBarTitleDisplayMode(.inline)
-            /*.onAppear {
-                // TODO: think about if
-                if movieInfoViewModel.dataModel == nil {
-                    guard let url = URL(string: "https://imdb-api.com/en/API/Title/k_zv8c981k/\(movieId)") else { return }
-                    movieInfoViewModel.fetch(url: url)
-                }
-            }*/
         }
         else {
             ProgressView()
@@ -64,6 +56,9 @@ struct MovieDescriptionView: View {
                         guard let url = URL(string: "https://imdb-api.com/en/API/Title/k_zv8c981k/\(movieId)") else { return }
                         movieInfoViewModel.fetch(url: url)
                     }
+                }
+                .alert(movieInfoViewModel.errorMessage ?? "", isPresented: $movieInfoViewModel.isError) {
+                    Button("OK", role: .cancel) { }
                 }
         }
     }
